@@ -1,0 +1,376 @@
+:root {
+  --font-family: "Josefin Sans", sans-serif;
+  --font-size-sm: 1.2rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 2.4rem;
+  --font-size-xl: 4rem;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  --space-xs: 0.8rem;
+  --space-sm: 1.2rem;
+  --space-md: 1.6rem;
+  --space-lg: 2.4rem;
+  --space-xl: 4rem;
+
+  --border-radius: 6px;
+  --transition: 0.2s ease;
+
+  --color-primary-blue: #3a7bfd;
+  --gradient: linear-gradient(135deg, #5f2c82, #49a09d);
+
+  --color-bg-dark: #171823;
+  --color-card-dark: #25273c;
+  --color-border-dark: #393a4c;
+  --color-text-dark: #c8cbe7;
+  --color-text-muted-dark: #777a92;
+
+  --color-bg-light: #f2f2f2;
+  --color-card-light: #ffffff;
+  --color-border-light: #e3e4f1;
+  --color-text-light: #494c6b;
+  --color-text-muted-light: #9495a5;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-light);
+}
+
+body.App--isDark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-dark);
+}
+
+/* Header */
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 320px;
+  padding-top: 5rem;
+  position: relative;
+  background-image: url("../images/bg-desktop-light.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.App--isDark .Header {
+  background-image: url("../images/bg-desktop-dark.jpg");
+}
+
+.Header__content {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.Header__title {
+  font-size: var(--font-size-lg);
+  letter-spacing: 1rem;
+  font-weight: var(--font-weight-bold);
+  color: white;
+}
+
+.Header__themeToggle {
+  width: 26px;
+  height: 26px;
+  background: url("../images/icon-moon.svg") no-repeat center;
+  border: none;
+  cursor: pointer;
+}
+
+.App--isDark .Header__themeToggle {
+  background: url("../images/icon-sun.svg") no-repeat center;
+}
+
+/* Input */
+.Main {
+  position: relative;
+  z-index: 5;
+}
+
+.TodoInput {
+  max-width: 540px;
+  margin: -10rem auto var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--color-card-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.TodoInput {
+  height: 60px;
+}
+
+.App--isDark .TodoInput {
+  background: var(--color-card-dark);
+}
+
+.TodoInput__circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  flex-shrink: 0;
+}
+
+.App--isDark .TodoInput__circle {
+  border: 1px solid var(--color-border-dark);
+}
+
+.TodoInput__circle.active {
+  background: var(--gradient);
+  border: none;
+}
+
+.TodoInput__field {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-sm);
+  background: transparent;
+  color: inherit;
+  line-height: 1.5;
+}
+
+/* Todo List */
+.TodoList {
+  max-width: 540px;
+  margin: 0 auto var(--space-md);
+  background: var(--color-card-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 35px 50px rgba(0, 0, 0, 0.2);
+}
+
+.App--isDark .TodoList {
+  background: var(--color-card-dark);
+}
+
+/* Items */
+.TodoList__items li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem;
+  border-bottom: 1px solid var(--color-border-light);
+  position: relative;
+}
+
+.App--isDark .TodoList__items li {
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+/* Checkbox */
+.TodoItem__check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-light);
+  background: transparent;
+  cursor: pointer;
+}
+
+.App--isDark .TodoItem__check {
+  border: 1px solid var(--color-border-dark);
+}
+
+.TodoItem__check.active {
+  background: var(--gradient);
+  border: none;
+}
+
+/* Text */
+.TodoItem__text {
+  flex: 1;
+  font-size: var(--font-size-md);
+}
+
+li.completed .TodoItem__text {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* Delete */
+.TodoItem__delete {
+  width: 18px;
+  height: 18px;
+  background: url("../images/icon-cross.svg") no-repeat center;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.TodoList__items li:hover .TodoItem__delete {
+  opacity: 1;
+}
+
+/* Footer */
+.TodoList__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted-light);
+}
+
+.App--isDark .TodoList__footer {
+  color: var(--color-text-muted-dark);
+}
+
+/* Filters */
+.TodoList__filters {
+  display: flex;
+  gap: 1rem;
+}
+
+.TodoList__filters button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.TodoList__filters button.active,
+.TodoList__filters button:hover {
+  color: var(--color-primary-blue);
+}
+
+/* Clear */
+.TodoList__clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Drag Info */
+.DragInfo {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.5;
+  font-size: var(--font-size-sm);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .Header {
+    background-image: url("../images/bg-mobile-light.jpg");
+  }
+
+  .App--isDark .Header {
+    background-image: url("../images/bg-mobile-dark.jpg");
+  }
+
+  .TodoInput,
+  .TodoList {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .TodoList__footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .TodoList__filters {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-card-light);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .App--isDark .TodoList__filters {
+    background: var(--color-card-dark);
+  }
+}
+
+/* Cursor Fix */
+.TodoItem__check,
+.TodoItem__delete,
+.Header__themeToggle,
+.TodoList__clear,
+.TodoList__filters button {
+  cursor: pointer;
+}
+
+/* Placeholder */
+.TodoInput__field::placeholder {
+  color: var(--color-text-muted-light);
+}
+
+.App--isDark .TodoInput__field::placeholder {
+  color: var(--color-text-muted-dark);
+}
+
+/* Hover */
+.TodoList__items li:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.App--isDark .TodoList__items li:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.TodoList__items li {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Delete button UX */
+.TodoItem__delete {
+  opacity: 0.3;
+  transition: 0.2s ease;
+}
+
+.TodoList__items li:hover .TodoItem__delete {
+  opacity: 1;
+}
+
+/* Checkbox active */
+.TodoItem__check.active {
+  background: var(--gradient);
+  border: none;
+  position: relative;
+}
+
+.TodoItem__check.active::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

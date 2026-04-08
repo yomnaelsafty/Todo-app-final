@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles/styles.css" />
+  </head>
+
+  <body class="App">
+    <header class="Header">
+      <div class="Header__content">
+        <h1 class="Header__title">TODO</h1>
+        <button class="Header__themeToggle"></button>
+      </div>
+    </header>
+
+    <!-- Input-->
+    <main class="Main">
+      <div class="TodoInput">
+        <span class="TodoInput__circle"></span>
+        <input
+          id="todo-input"
+          type="text"
+          class="TodoInput__field"
+          placeholder="Create a new todo..."
+        />
+      </div>
+
+      <!-- List -->
+      <div class="TodoList">
+        <ul id="todo-list" class="TodoList__items"></ul>
+
+        <div class="TodoList__footer">
+          <span id="todo-count" class="TodoList__count"> 0 items left </span>
+
+          <div class="TodoList__filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+          </div>
+
+          <button id="clear-completed" class="TodoList__clear">
+            Clear Completed
+          </button>
+        </div>
+      </div>
+
+      <p class="DragInfo">Drag and drop to reorder list</p>
+    </main>
+
+    <script type="module" src="./scripts/script.js"></script>
+  </body>
+</html>
